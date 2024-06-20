@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Bite - Fast Food</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+   <nav class="header--menu">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#category">Category</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+        </nav>
+   
+
+    <div class="search--box">
+        <form id="locationSearchForm" action="search_results.html" method="get">
+            <input type="text" name="location" placeholder="Enter your location" required/>
+        </form>
+        <button type="submit" class="fas fa-search"></button>
+    </div>
+    
+
+    <!-- Food menu section -->
+    <main>
+        <h2 class="section-heading" id="category">Food Menu</h2>
+        <div class="card--list" id="cardList">
+            <div class="card" onclick="showMenuItems('burger')">
+                <a href="order.html"><img src="./images/burger.png" alt="Burger" /></a>
+                <h5>Burger</h5>
+            </div>
+            <div class="card" onclick="showMenuItems('chips')">
+                <img src="./images/chips.png" alt="Chips" />
+                <h5>Chips</h5>
+            </div>
+            <div class="card" onclick="showMenuItems('milkshake')">
+                <img src="./images/milkshake.png" alt="Milkshake" />
+                <h5>Milkshake</h5>
+            </div>
+            <div class="card" onclick="showMenuItems('pizza')">
+                <img src="./images/pizza.png" alt="Pizza" />
+                <h5>Pizza</h5>
+            </div>
+        </div>
+
+        <!-- Card item section -->
+        <h2 class="section-heading">Menu Items</h2>
+        <div class="other-cards" id="otherCards">
+            <!-- Menu items will be displayed dynamically here -->
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

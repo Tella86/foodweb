@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Quick Bite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="header--menu">
+            <div class="search--box">
+                <form id="locationSearchForm" action="search_results.html" method="get">
+                     
+                    <input type="text" name="location" placeholder="Enter your location" required/>
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search results section -->
+    <section class="search-results">
+        <h2 class="section-heading">Search Results</h2>
+        <div class="results-list" id="resultsList">
+            <!-- Dynamic search results will be displayed here -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript to handle dynamic search results
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const location = urlParams.get('location');
+            const resultsList = document.getElementById('resultsList');
+
+            // Mock search results based on location
+            const searchResults = [
+                { name: 'Quick Bite Downtown', address: '123 Main St, Downtown' },
+                { name: 'Quick Bite Uptown', address: '456 Elm St, Uptown' },
+                { name: 'Quick Bite Suburb', address: '789 Oak St, Suburb' },
+            ];
+
+            if (location) {
+                const filteredResults = searchResults.filter(result =>
+                    result.address.toLowerCase().includes(location.toLowerCase())
+                );
+
+                if (filteredResults.length > 0) {
+                    filteredResults.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.classList.add('result-item');
+                        resultItem.innerHTML = `<h3>${result.name}</h3><p>${result.address}</p>`;
+                        resultsList.appendChild(resultItem);
+                    });
+                } else {
+                    resultsList.innerHTML = '<p>No results found for your location.</p>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
